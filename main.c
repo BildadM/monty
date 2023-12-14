@@ -1,5 +1,7 @@
 #include "monty.h"
 
+stack_t *stack = NULL;
+
 /**
  * main - start of program
  * @argc: argument
@@ -19,13 +21,11 @@ if (argc != 2)
 fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
 return (EXIT_FAILURE);
 }
-
 if (file == NULL)
 {
 fprintf(stderr, "Error: Failed to open file '%s'\n", argv[1]);
 return (EXIT_FAILURE);
 }
-
 while (fscanf(file, "%s", instruction) != EOF)
 {
 if (strcmp(instruction, "push") == 0)
