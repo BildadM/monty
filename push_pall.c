@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * push - pushes an element to the stack.
@@ -12,7 +12,7 @@ void push(stack_t **stack, int value)
 
 	if (new_node == NULL)
 	{
-		fprintf(stderr, "Error: Memory allocation failed"\n);
+		fprintf(stderr, "Error: Memory allocation failed\n");
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = value;
@@ -22,6 +22,23 @@ void push(stack_t **stack, int value)
 	if (*stack != NULL)
 		(*stack)->prev = new_node;
 	*stack = new_node;
+}
+
+/**
+ * pall - prints all the values on the stack.
+ * @stack: the elements
+ * @line_number: number of lines
+ */
+void pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current = *stack;
+
+	(void)line_number;
+	while (current != NULL)
+	{
+		printf("%d\n", current->n);
+		current = current->next;
+	}
 }
 
 /**
